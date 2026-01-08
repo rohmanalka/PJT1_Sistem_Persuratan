@@ -17,9 +17,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/pejabat/dashboard', function () {
         return view('dashboard.pejabat');
-    })->middleware('pejabat');
+    })->name('pejabat.dashboard')->middleware('pejabat');
 
     Route::get('/pegawai/dashboard', function () {
         return view('dashboard.pegawai');
-    });
+    })->name('pegawai.dashboard');
 });

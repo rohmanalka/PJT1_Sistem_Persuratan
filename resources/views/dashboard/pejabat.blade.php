@@ -1,17 +1,10 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard Pejabat</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="min-h-screen bg-gray-100">
+@extends('components.layout.app')
 
-    <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold mb-6 text-gray-800">Dashboard Pejabat</h1>
+@section('title', 'Dashboard Pejabat')
+@section('page-title', 'Dashboard')
 
-        <div class="bg-white rounded-xl shadow-lg p-6">
-            <p class="text-gray-700">Selamat datang di dashboard pejabat!</p>
-        </div>
-    </div>
-</body>
-</html>
+@section('content')
+    <h2 class="text-xl font-bold mb-4">
+        Selamat datang, {{ auth()->user()->name }}
+    </h2>
+@endsection
