@@ -14,7 +14,7 @@
         <x-sidebar />
 
         <div class="flex-1 flex flex-col">
-            <x-header :title="$pageTitle ?? 'Dashboard'" />
+            <x-header :pageTitle="$pageTitle ?? 'Dashboard'" />
             <x-breadcrumb />
 
             <main class="flex-1 p-6">

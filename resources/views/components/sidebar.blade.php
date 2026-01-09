@@ -6,22 +6,22 @@
     <nav class="p-4 space-y-2 text-sm">
 
         @if (auth()->user()->role === 'pegawai')
-            <x-sidebar.link href="pegawai/dashboard">
+            <x-sidebar.link route="pegawai.dashboard">
                 Dashboard
             </x-sidebar.link>
-            <x-sidebar.link href="/surat">
+            <x-sidebar.link route="surat.riwayat">
                 Surat Saya
             </x-sidebar.link>
-            <x-sidebar.link href="/surat/create">
+            <x-sidebar.link route="surat.pengajuan">
                 Buat Surat
             </x-sidebar.link>
         @endif
 
         @if (auth()->user()->role === 'pejabat')
-            <x-sidebar.link href="pejabat/dashboard">
+            <x-sidebar.link route="pejabat.dashboard">
                 Dashboard
             </x-sidebar.link>
-            <x-sidebar.link href="/surat/masuk">
+            <x-sidebar.link route="surat.masuk">
                 Surat Masuk
             </x-sidebar.link>
         @endif
