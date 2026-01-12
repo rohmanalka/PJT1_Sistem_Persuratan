@@ -1,14 +1,7 @@
 @props(['pageTitle' => 'Dashboard'])
 
-<header class="bg-white border-b px-6 py-4 flex justify-between items-center">
+<header class="bg-white border-b-2 border-gray-300 px-6 py-4">
     <h1 class="font-semibold text-lg">
         {{ $pageTitle }}
     </h1>
-
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <button class="text-red-600 text-sm">
-            Logout
-        </button>
-    </form>
 </header>

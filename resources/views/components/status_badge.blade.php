@@ -10,6 +10,6 @@
     };
 @endphp
 
-<span class="px-2 py-1 rounded text-sm font-medium {{ $classes }}">
+<span class="px-2 py-1 rounded text-sm font-sm {{ $classes }}">
     {{ ucfirst($status) }}
 </span>
