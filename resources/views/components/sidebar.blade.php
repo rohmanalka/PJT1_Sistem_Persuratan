@@ -21,7 +21,7 @@
             <x-sidebar.link route="pejabat.dashboard">
                 Dashboard
             </x-sidebar.link>
-            <x-sidebar.link route="surat.masuk">
+            <x-sidebar.link route="pejabat.surat.masuk">
                 Surat Masuk
             </x-sidebar.link>
         @endif
