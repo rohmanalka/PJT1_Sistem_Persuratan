@@ -3,6 +3,7 @@
 namespace App\Livewire\Surat;
 
 use Livewire\Component;
+use Livewire\WithPagination;
 use App\Models\SuratModel;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
@@ -14,6 +15,29 @@ use Livewire\Attributes\Layout;
 
 class Index extends Component
 {
+    use WithPagination;
+
+    protected $paginationTheme = 'tailwind';
+
+    public $search = '';
+    public ?SuratModel $detailSurat = null;
+
+    public function openModal($id)
+    {
+        $this->detailSurat = SuratModel::with(['jenisSurat', 'approver'])
+            ->findOrFail($id);
+    }
+
+    public function closeModal()
+    {
+        $this->detailSurat = null;
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function delete($id_surat)
     {
         $surat = SuratModel::where('id_surat', $id_surat)
@@ -26,7 +50,6 @@ class Index extends Component
         }
 
         $surat->delete();
-
         session()->flash('success', 'Surat berhasil dihapus.');
     }
 
@@ -34,8 +57,12 @@ class Index extends Component
     {
         return view('livewire.surat.index', [
             'surat' => SuratModel::where('id_user', Auth::id())
+                ->where(function ($q) {
+                    $q->where('nomor_surat', 'like', "%{$this->search}%")
+                        ->orWhere('tanggal_surat', 'like', "%{$this->search}%");
+                })
                 ->latest()
-                ->get()
+                ->paginate(10),
         ]);
     }
 }

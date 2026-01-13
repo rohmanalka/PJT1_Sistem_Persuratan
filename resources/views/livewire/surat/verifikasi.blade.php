@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <title>Verifikasi Surat</title>
@@ -43,6 +44,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="card">
         <h2>Verifikasi Surat</h2>
@@ -59,12 +61,12 @@
 
         <div class="item">
             <span class="label">Disetujui oleh:</span>
-            {{ $surat->pejabat->name ?? '-' }}
+            {{ $surat->approver->nama ?? '-' }}
         </div>
 
         <div class="item">
             <span class="label">Jabatan:</span>
-            {{ $surat->pejabat->jabatan ?? '-' }}
+            {{ $surat->approver->jabatan ?? '-' }}
         </div>
 
         <div class="item">
@@ -73,8 +75,9 @@
         </div>
 
         <div class="status">
-            ✔ SURAT SAH & TELAH DISETUJUI
+            SURAT SAH & TELAH DISETUJUI
         </div>
     </div>
 </body>
+
 </html>

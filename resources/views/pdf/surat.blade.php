@@ -108,7 +108,7 @@
             <td class="instansi" width="70%">
                 <h1>PERUM JASA TIRTA I</h1>
                 <p>Jl. Surabaya no.2A, Malang</p>
-                <p>Email: info@contoh.co.id | Telp: (021) 123456</p>
+                <p>Email: mlg@jasatirta1.co.id | Telp. (0341) 551971</p>
             </td>
             <td width="15%"></td>
         </tr>
@@ -123,17 +123,17 @@
             <tr>
                 <td width="25%">Nama</td>
                 <td width="2%">:</td>
-                <td>{{ $surat->user->name ?? '-' }}</td>
+                <td>{{ $surat->user->nama ?? '-' }}</td>
+            </tr>
+            <tr>
+                <td>Divisi</td>
+                <td>:</td>
+                <td>{{ $surat->user->divisi ?? '-' }}</td>
             </tr>
             <tr>
                 <td>Jabatan</td>
                 <td>:</td>
-                <td>{{ $surat->jabatan ?? '-' }}</td>
-            </tr>
-            <tr>
-                <td>Unit Kerja</td>
-                <td>:</td>
-                <td>{{ $surat->unit_kerja ?? '-' }}</td>
+                <td>{{ $surat->user->jabatan ?? '-' }}</td>
             </tr>
             <tr>
                 <td>Tanggal Pengajuan</td>
@@ -150,31 +150,34 @@
     <table class="ttd">
         <tr>
             <td>
-                <p>
-                    {{ optional($surat->approved_at)->translatedFormat('d F Y') }}
-                </p>
-                <p>Disetujui Secara Elektronik</p>
                 @if ($surat->status === 'approved')
+                    <p>
+                        {{ optional($surat->approved_at)->translatedFormat('d F Y') }}
+                    </p>
+                    <p>Disetujui Secara Elektronik</p>
+
                     <img src="data:image/svg+xml;base64,{{ base64_encode(
                         QrCode::format('svg')->size(120)->generate(route('surat.verifikasi', $surat->id_surat)),
                     ) }}"
                         style="width:100px;height:100px;" alt="QR Code">
+
+                    <p class="nama">
+                        {{ $surat->approver->nama ?? 'Nama Pejabat' }}
+                    </p>
+                    <p>{{ $surat->approver->jabatan ?? 'Jabatan Pejabat' }}</p>
                 @endif
-                <p class="nama">
-                    {{ $surat->pejabat->name ?? 'Nama Pejabat' }}
-                </p>
-                <p>{{ $surat->pejabat->jabatan ?? 'Jabatan Pejabat' }}</p>
             </td>
 
             <td>
                 <p>Yang Mengajukan,</p>
                 <div style="height:80px"></div>
                 <p class="nama">
-                    {{ $surat->user->name ?? '-' }}
+                    {{ $surat->user->nama ?? '-' }}
                 </p>
-                <p>{{ $surat->jabatan ?? '-' }}</p>
+                <p>{{ $surat->user->jabatan ?? '-' }}</p>
             </td>
         </tr>
     </table>
 </body>
+
 </html>
