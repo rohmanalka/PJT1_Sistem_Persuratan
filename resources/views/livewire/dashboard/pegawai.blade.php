@@ -1,5 +1,4 @@
 <div class="space-y-6">
-
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div class="bg-white rounded-lg shadow p-5 border-b-5 border-yellow-400">
             <p class="text-sm text-gray-500">Pending</p>
@@ -19,7 +18,7 @@
         <div class="flex justify-between items-center mb-4">
             <h3 class="font-semibold text-lg">Riwayat Pengajuan Terakhir</h3>
             <button>
-                <a href="{{ route('pegawai.surat.riwayat') }}"
+                <a wire:navigate href="{{ route('pegawai.surat.riwayat') }}"
                     class="px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-medium text-sm">
                     Lihat Semua
                 </a>

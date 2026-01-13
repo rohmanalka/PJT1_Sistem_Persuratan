@@ -38,7 +38,7 @@
                 class="w-full flex items-center gap-3 px-4 py-2 rounded-lg
                        text-red-700 hover:text-red-300 transition font-semibold">
                 <i class="ri-logout-box-r-line text-lg"></i>
-                Logout
+                Keluar
             </button>
         </form>
     </div>

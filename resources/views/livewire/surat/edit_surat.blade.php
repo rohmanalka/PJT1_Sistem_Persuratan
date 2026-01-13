@@ -1,13 +1,9 @@
 <div class="max-w-5xl bg-white p-6 rounded shadow">
-
     <h2 class="text-lg font-semibold mb-6">
         Edit Pengajuan Surat
     </h2>
-
     <form wire:submit.prevent="update" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
         <div class="space-y-4">
-
             <div>
                 <label class="text-sm font-medium">Jenis Surat</label>
                 <select wire:model="id_jenis_surat" class="w-full border rounded p-2">
@@ -44,7 +40,6 @@
                 <input type="text" value="{{ $surat->nomor_surat }}" disabled
                     class="w-full border rounded p-2 bg-gray-100">
             </div>
-
         </div>
 
         <div>
@@ -56,7 +51,7 @@
         </div>
 
         <div class="md:col-span-2 flex justify-end gap-2 pt-4">
-            <a href="{{ route('surat.riwayat') }}" class="px-4 py-2 border rounded">
+            <a wire:navigate href="{{ route('pegawai.surat.riwayat') }}" class="px-4 py-2 border rounded">
                 Batal
             </a>
             <button class="bg-blue-600 text-white px-4 py-2 rounded">
