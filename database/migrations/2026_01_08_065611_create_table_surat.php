@@ -22,10 +22,12 @@ return new class extends Migration
             $table->date('tanggal_surat');
             $table->text('catatan')->nullable();
             $table->timestamp('approved_at')->nullable();
+            $table->unsignedBigInteger('approved_by')->nullable();
             $table->timestamps();
 
             $table->foreign('id_user')->references('id_user')->on('users')->cascadeOnDelete();
             $table->foreign('id_jenis_surat')->references('id_jenis_surat')->on('jenis_surat');
+            $table->foreign('approved_by')->references('id_user')->on('users')->nullOnDelete();
         });
     }
 

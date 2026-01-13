@@ -14,9 +14,9 @@ class JenisSuratSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            ['nama' => 'Surat Cuti'],
-            ['nama' => 'Surat Izin'],
-            ['nama' => 'Surat Tugas'],
+            ['nama' => 'Surat Cuti', 'kode' => 'SC'],
+            ['nama' => 'Surat Izin', 'kode' => 'SI'],
+            ['nama' => 'Surat Tugas', 'kode' => 'ST'],
         ];
 
         DB::table('jenis_surat')->insert($data);

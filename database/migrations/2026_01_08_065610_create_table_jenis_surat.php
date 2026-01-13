@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('jenis_surat', function (Blueprint $table) {
             $table->id('id_jenis_surat');
             $table->string('nama');
-            $table->timestamps();
+            $table->string('kode')->unique();
         });
     }
 

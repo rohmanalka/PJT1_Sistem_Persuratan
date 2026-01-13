@@ -20,7 +20,8 @@ class SuratModel extends Model
         'status',
         'tanggal_surat',
         'catatan',
-        'approved_at'
+        'approved_at',
+        'approved_by',
     ];
 
     public function user(): BelongsTo
@@ -31,5 +32,10 @@ class SuratModel extends Model
     public function jenisSurat(): BelongsTo
     {
         return $this->belongsTo(JenisSuratModel::class, 'id_jenis_surat', 'id_jenis_surat');
+    }
+
+    public function approver(): BelongsTo
+    {
+        return $this->belongsTo(UserModel::class, 'approved_by', 'id_user');
     }
 }

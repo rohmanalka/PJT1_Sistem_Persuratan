@@ -16,13 +16,17 @@ class UserSeeder extends Seeder
     {
         $data = [
             [
-                'name' => 'Pejabat 1',
+                'nama' => 'Pejabat 1',
+                'divisi' => 'DTIK',
+                'jabatan' => 'Pejabat DTIK',
                 'email' => 'pejabat1@pejabat.com',
                 'password' => Hash::make('pejabat1'),
                 'role' => 'pejabat',
             ],
             [
-                'name' => 'Pegawai 1',
+                'nama' => 'Pegawai 1',
+                'divisi' => 'DTIK',
+                'jabatan' => 'Staff DTIK',
                 'email' => 'pegawai1@pegawai.com',
                 'password' => Hash::make('pegawai1'),
                 'role' => 'pegawai',
