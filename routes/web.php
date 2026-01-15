@@ -5,11 +5,11 @@ use App\Http\Controllers\auth\AuthController;
 use App\Livewire\Surat\Index;
 use App\Livewire\Surat\CreateSurat;
 use App\Livewire\Surat\EditSurat;
-use App\Livewire\Surat\ShowSurat;
 use App\Models\SuratModel;
 use App\Livewire\Pejabat\SuratMasuk;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Livewire\Dashboard\Pegawai;
+use App\Livewire\Dashboard\Pejabat;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -34,7 +34,7 @@ Route::middleware(['auth', 'role:pegawai'])->group(function () {
 
 //SURAT PEJABAT
 Route::middleware(['auth', 'pejabat'])->group(function () {
-    Route::get('/pejabat/dashboard', Pegawai::class)->name('pejabat.dashboard');
+    Route::get('/pejabat/dashboard', Pejabat::class)->name('pejabat.dashboard');
     Route::get('/pejabat/surat-masuk', SuratMasuk::class)->name('pejabat.surat.masuk');
     Route::get('/pejabat/surat/{surat}/preview', function (SuratModel $surat) {
         return Pdf::loadView('pdf.surat', compact('surat'))->stream();
