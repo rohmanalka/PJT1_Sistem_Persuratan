@@ -13,13 +13,14 @@ class SuratModel extends Model
     protected $fillable = [
         'id_jenis_surat',
         'id_user',
+        'id_tujuan',
         'nomor_surat',
         'tanggal_surat',
         'judul',
         'isi',
         'status',
-        'tanggal_surat',
         'catatan',
+        'prioritas',
         'approved_at',
         'approved_by',
     ];
@@ -37,5 +38,10 @@ class SuratModel extends Model
     public function approver(): BelongsTo
     {
         return $this->belongsTo(UserModel::class, 'approved_by', 'id_user');
+    }
+
+    public function tujuan()
+    {
+        return $this->belongsTo(UserModel::class, 'id_tujuan', 'id_user');
     }
 }

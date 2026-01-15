@@ -71,7 +71,7 @@
 
         <div class="item">
             <span class="label">Tanggal Persetujuan:</span>
-            {{ optional($surat->approved_at)->translatedFormat('d F Y') }}
+            {{ $surat->approved_at ? \Carbon\Carbon::parse($surat->approved_at)->translatedFormat('d F Y H:i') : '-' }}
         </div>
 
         <div class="status">

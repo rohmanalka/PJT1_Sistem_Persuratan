@@ -64,8 +64,21 @@
             font-size: 11pt;
         }
 
+        .tujuan {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .tujuan p {
+            margin: 5px 0;
+        }
+
         .identitas {
             margin-top: 25px;
+        }
+
+        .identitas p {
+            margin: 5px 0;
         }
 
         .identitas table {
@@ -118,7 +131,14 @@
         <h2>PENGAJUAN {{ $surat->jenisSurat->nama ?? 'SURAT' }}</h2>
         <p>Nomor: {{ $surat->nomor_surat }}</p>
     </div>
+    <div class="tujuan">
+        <p>Kepada Yth.</p>
+        <p><strong>{{ $surat->tujuan->nama ?? 'Pejabat yang Berwenang ' }}</strong>{{' '}} {{ $surat->tujuan->jabatan ?? 'Jabatan' }}</p>
+        <p>di Tempat</p>
+    </div>
     <div class="identitas">
+        <p>Dengan hormat,</p>
+        <p>yang bertanda tangan di bawah ini:</p>
         <table>
             <tr>
                 <td width="25%">Nama</td>
