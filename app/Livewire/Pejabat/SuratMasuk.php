@@ -17,8 +17,10 @@ class SuratMasuk extends Component
 {
     use WithPagination;
 
-    public $showModal = false;
+    protected $paginationTheme = 'tailwind';
 
+    public $search = '';
+    public $showModal = false;
     public $tinjauSurat;
     public $status = 'approved';
     public $catatan = '';
@@ -29,6 +31,17 @@ class SuratMasuk extends Component
         $this->status = 'approved';
         $this->catatan = '';
         $this->showModal = true;
+    }
+
+    public function closeModal()
+    {
+        $this->showModal = false;
+        $this->reset('tinjauSurat');
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 
     public function submitReview()
@@ -50,14 +63,20 @@ class SuratMasuk extends Component
             'approved_by' => Auth::id(),
         ]);
 
-        $this->showModal = false;
-        $this->reset('tinjauSurat');
+        $this->closeModal();
+        session()->flash('success', 'Keputusan berhasil disimpan.');
     }
 
     public function render()
     {
         return view('livewire.pejabat.surat_masuk', [
-            'suratMasuk' => SuratModel::where('status', ['pending', 'approved'])->latest()->get(),
+            'suratMasuk' => SuratModel::where('status', 'pending')
+                ->where(function ($q) {
+                    $q->where('nomor_surat', 'like', "%{$this->search}%")
+                        ->orWhere('judul', 'like', "%{$this->search}%");
+                })
+                ->latest()
+                ->paginate(10),
         ]);
     }
 }
